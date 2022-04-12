@@ -1,0 +1,21 @@
+<main id="main" class="main">
+  <div class="pagetitle">
+    <h1>Les visio-conférences:</h1>
+  </div><!-- End Page Title -->
+  <section>
+    <div class="row">
+      <div class="col-lg-4">
+        <p class="video-description">local:</p>
+        <video #local_video [autoplay]="true" [muted]="true"></video>
+        <button class="btn btn-success" (click)="call()" [disabled]="inCall || !localVideoActive">Rejoindre</button>
+        <button class="btn btn-info" (click)="pauseLocalVideo()" *ngIf="localVideoActive">Eteindre webcam</button>
+        <button class="btn btn-info" (click)="startLocalVideo()" *ngIf="!localVideoActive">Activer webcam</button>
+        <button class="btn btn-info" (click)="hangUp()" [disabled]="!inCall">Hangup</button>
+      </div>
+      <div class="col-lg-4" *ngIf="inCall">
+          <p class="video-description">Préparer pour accéder au meet:</p>
+          <video #received_video [autoplay]="true"></video>
+      </div>
+    </div>
+</section>
+</main>
